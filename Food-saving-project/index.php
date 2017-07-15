@@ -3,13 +3,14 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
+	<title>	FOOD SAVING PROJECT</title>
     <body>
     
-        <h1>Today Route</h1>
+        <h1>Today Route, <?php echo date("Y-m-d"); ?></h1>
           
         <?php
      
-            $query = "SELECT * FROM user";
+            $query = "SELECT * FROM user INNER JOIN request ON user.u_id=request.u_id where request.r_date = (CURDATE())";
             mysqli_query($conn, $query) or die('Error querying database.');
             
             $result = mysqli_query($conn, $query);
